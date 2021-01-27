@@ -1,0 +1,64 @@
+# Built application files
+*.apk
+*.ap_
+
+# Java class files
+*.class
+
+# Object files
+*.o
+
+# Gradle files
+.gradle/
+build/
+gradlew
+gradlew.bat
+gradle
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Cmake
+.cxx
+cmake_install.cmake
+
+# Python
+wheelhouse
+__pycache__
+*.egg-info
+python/dist
+python/vosk/*.cc
+python/vosk/*.c
+python/vosk/*.h
+python/vosk/*.i
+python/vosk/vosk.py
+python/vosk/vosk_wrap.cpp
+python/test/db
+python/test/hyp
+python/test/model
+python/test/ref
+python/test/result.txt
+python/test/wav.scp
+
+# Java
+*.so
+java/org
+java/*.cc
+java/model-spk/
+java/model/
+
+# CSharp
+csharp/gen
+csharp/*.exe
+csharp/*.c
+csharp/model/
+csharp/test.wav
+Vosk.dll
+
+# Node
+nodejs/vosk_wrap.cc
+nodejs/example/model
+nodejs/example/test.wav
+nodejs/node_modules
+nodejs/package-lock.json
+nodejs/build
