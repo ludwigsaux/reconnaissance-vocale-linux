@@ -31,9 +31,9 @@
     <br />
     <a href="https://github.com/ludwigsaux/reconnaissance-vocale">Voir demo</a>
     ·
-    <a href="https://github.com/ludwigsaux/reconnaissance-vocale/issues">Report Bug</a>
+    <a href="https://github.com/ludwigsaux/reconnaissance-vocale/issues">Signaler un bug</a>
     ·
-    <a href="https://github.com/ludwigsaux/reconnaissance-vocale/issues">Request Feature</a>
+    <a href="https://github.com/ludwigsaux/reconnaissance-vocale/issues">Demande de fonctionnalité</a>
   </p>
 </p>
 
@@ -44,7 +44,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">À propos du projet</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
