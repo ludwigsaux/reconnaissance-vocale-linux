@@ -29,7 +29,7 @@
     <a href="https://github.com/ludwigsaux/reconnaissance-vocale"><strong>Explorer la doc »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/ludwigsaux/reconnaissance-vocale">View Demo</a>
+    <a href="https://github.com/ludwigsaux/reconnaissance-vocale">Voir demo</a>
     ·
     <a href="https://github.com/ludwigsaux/reconnaissance-vocale/issues">Report Bug</a>
     ·
