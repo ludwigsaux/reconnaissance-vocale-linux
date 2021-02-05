@@ -12,7 +12,7 @@ def auth(username,source,periph):
     #ouverture fichier log
     config = configparser.ConfigParser()
     iniFile=config.read('authent.ini')
-    print(iniFile)
+    print(iniFile)  #affiche le fichier .ini chargé (utile log)
     log = config['Log']
     if(periph!="stdout"):#stdout = sortie console si autre alors on écrit dans le fichier log
         orig_stdout = sys.stdout
@@ -21,7 +21,7 @@ def auth(username,source,periph):
         print("Fichier log : ", str(log['log']))
     
     
-    #date - permet d'afficher la date
+    #date - permet d'afficher la date (utile log)
     date = datetime.datetime.now()
     print("Date : ",date)
     
@@ -33,27 +33,27 @@ def auth(username,source,periph):
         #test la voix enregistrer avec la base de donnée
     os.chdir("idSpeaker")
     os.system('python test.py')
-        #écrit le nom de la personne trouvé
+        #écrit le nom de la personne trouvé dans le fichier data
     filin = open(str(Path['data']), 'r')
     lignes = filin.readlines()
     print(lignes[0])
         #test la personne trouvé avec la personne du qrcode
     if(lignes[0]!=username):
-        print("ok !!")
+        print("voix non reconnue") #affiche message erreur (utile log)
         os.chdir("../")
         
             #appel le fichier permettant d'écouter l'utilisateur
         Path = config['Path']
-        print(str(Path['micro']))
         vosk_api = importlib.import_module(str(Path['micro']))
         
             #ouvre le fichier contenant ce qu'a dit l'utilisateur
         Path = config['Path']
         filin = open(str(Path['data']), 'r') 
         lignes = filin.readlines()
+
             #ouvre le fichier texte contenant les identifiants
         with open(str(Path['code'])) as f:
-                        #divise le fichier en ligne
+                        #divise le fichier bd en ligne
                     mylist = f.read().splitlines() 
     
         valide=0
@@ -63,10 +63,10 @@ def auth(username,source,periph):
                  #compare le code dit avec le code de la db et compare le nom de la bd avec celui du qrcode
              if (val.split(";")[1]==lignes[0] and val.split(";")[0]==username ):
                  print("mot de passe bd : ",val.split(";")[1])
-                 print("mot de passe prononcé : ",lignes[0])
+                 print("mot de passe prononcé : ",lignes[0])#(utile log)
                  print("username bd : ",val.split(";")[0])
-                 print("username : ",username)
-                 print("vous pouvez passer !")
+                 print("username : ",username) #(utile log)
+                 print("vous pouvez passer !") #(utile log)
                      #si le code dit est bon alors valide=1
                  valide=1
                      #on sort de la boucle
@@ -74,7 +74,7 @@ def auth(username,source,periph):
              #le code saisie vocalement n'a pas été reconnu alors on entre le code au clavier
         if(valide==0): 
                  code = input("code ?")
-                 print("code écrit : ",code)
+                 print("code écrit : ",code) #(utile log)
                  test=Clavier.clavier(code,username,source)
                  if(test==1):
                      valide=1
