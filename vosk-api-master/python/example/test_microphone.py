@@ -8,11 +8,18 @@ import vosk
 import sys
 import json
 from playsound import playsound
+import configparser
+
+config = configparser.ConfigParser()
+iniFile=config.read('authent.ini')
+Path = config['Path']
+
 
 q = queue.Queue()
-
+fichier = open(str(Path['data']), "w")
+fichier.close()
 def tests(num): #fonction permettant décrire ce que dit la personne dans un fichier texte
-    fichier = open("/home/user/Bureau/git/data.txt", "a") #ouvre en écriture le fichier texte
+    fichier = open(str(Path['data']), "a") #ouvre en écriture le fichier texte
     fichier.write(str(num)) #écrit dans le fichier texte
     fichier.close() 
 
@@ -81,7 +88,7 @@ try:
 
             rec = vosk.KaldiRecognizer(model,args.samplerate)
             
-            help_dict = {  #dictionnaire de données permettant de traduire
+            help_dict = {  #dictionnaire de données permettant de transformer quatre en 4 etc...
                     'un': '1', 
                     'deux': '2', 
                     'trois': '3', 
@@ -93,12 +100,13 @@ try:
                     'neuf': '9', 
                     'zéro' : '0'
                     } 
-            playsound('/home/user/Bureau/direCode.mp3')#joue le son disant que l'on doit parler
+            playsound(str(Path['parler']))#joue le son disant que l'on doit parler
+            digit=0
             while True:
 
              data = q.get()
              if rec.AcceptWaveform(data): #verifie si du son est détecter
-                   digit=0
+                   
                    
                    test=rec.Result()  #récupere les informations transmise par la fonction de reconnaissance
                    print (test)
@@ -108,14 +116,15 @@ try:
                    test_str=d["text"] #récupération de ce qu'a dit la personne
                    
                    res = ''.join(help_dict[ele] for ele in test_str.split())#traduit les chiffres en caractéres en numérique
-                   print(res)
+                   print("chiffre en lettre : ",res)
                    
                    if(len(res)==1 and digit!=4):#Test la longueur du code
                           tests(res)
                           digit=digit+1#compteur permettant de voir combien de chiffre ont été dis
-                          playsound('/home/user/Bureau/chiffreSaisie.mp3')#joue le son correpondant a l'entrée d'un chiffre
+                          playsound(str(Path['chiffreSaisie']))#joue le son correpondant a l'entrée d'un chiffre
+                          print("chiffre numéro : ",digit)
                    if(digit==4) :      
-                          playsound('/home/user/Bureau/codeSaisie.mp3')#joue le son signifiant que le code est saisie
+                          playsound(str(Path['codeSaisie']))#joue le son signifiant que le code est saisie
                           break#mets fin a la boucle une fois que le code a été saisie
                    
              else:
