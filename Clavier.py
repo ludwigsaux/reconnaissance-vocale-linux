@@ -9,8 +9,8 @@ def clavier(code, username, filetype):
         for val in mylist:#Explore chaque ligne 
             if (val.split(";")[1]==code and val.split(";")[0]==username ):#Test chaque ligne
                 print ("vous pouvez passer")
-                return 1
+                return 1 #retourne 1 pour a la fonction auth
         if (valide==0):
             print("vous ne pouvez pas passer")
-            return 0
+            return 0 #retourne 0 pour a la fonction auth
 
